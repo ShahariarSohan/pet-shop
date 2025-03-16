@@ -39,7 +39,7 @@ const displayAllCategories = async () => {
                 <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-dollar-sign"></i><p>Price :${petData.price ? petData.price : "not available"}<p><i class="fa-solid fa-dollar-sign"></i></div>
                 
                 <div class="flex items-center justify-between">
-                <btn class="btn"><i class="fa-solid fa-thumbs-up"></i></btn>
+                <btn class="btn" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
                 <btn class="btn">Adopt</btn>
                 <btn class="btn">Details</btn>
                 </div>
@@ -91,7 +91,7 @@ const displayByCategory = async (categoryName) => {
                     <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-dollar-sign"></i><p>Price :${petData.price ? petData.price : "not available"}<p><i class="fa-solid fa-dollar-sign"></i></div>
                     
                     <div class="flex items-center justify-between">
-                    <btn class="btn"><i class="fa-solid fa-thumbs-up"></i></btn>
+                    <btn class="btn" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
                     <btn class="btn">Adopt</btn>
                     <btn class="btn">Details</btn>
                     </div>
@@ -102,5 +102,19 @@ const displayByCategory = async (categoryName) => {
 
         });
     }
+
+}
+
+// display by like button
+
+const displayLiked = (thumbnail) => {
+    const thumbnailContainer = document.getElementById("thumbnail-container")
+    const div = document.createElement('div')
+    div.innerHTML = `
+    <div class="p-2">
+     <img class=" w-full  lg:w-60 lg:h-24 rounded-md" src=${thumbnail}/>
+    </div>
+    `
+    thumbnailContainer.append(div)
 
 }
