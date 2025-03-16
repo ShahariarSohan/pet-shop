@@ -35,6 +35,9 @@
       main {
         font-family: "Inter", sans-serif;
       }
+      .primary-text{
+        color:#13131399;
+      }
     </style>
     <title>Pet Shop</title>
   </head>
@@ -42,7 +45,7 @@
     <header>
       <!-- nav starts -->
       <nav>
-        <div class="navbar bg-base-100 px-5">
+        <div class="navbar bg-base-100 lg:px-5 py-10">
           <div class="navbar-start">
             <div class="dropdown">
               <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -63,7 +66,7 @@
               </div>
               <ul
                 tabindex="0"
-                class="menu menu-sm dropdown-content text-gray-500 bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                class="menu menu-sm dropdown-content font-extrabold primary-text bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <li><a>Home</a></li>
                 <li><a>Shop</a></li>
@@ -76,7 +79,7 @@
             </div>
           </div>
           <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1 text-gray-500">
+            <ul class="menu menu-horizontal px-1 primary-text font-extrabold">
               <li><a>Home</a></li>
               <li><a>Shop</a></li>
               <li><a>Contact</a></li>
@@ -95,6 +98,15 @@
         </div>
       </nav>
       <!-- nav ends -->
+       <!-- banner starts -->
+        <div class="flex flex-col  items-center justify-center space-y-10 text-center mb-10">
+            <div class="flex items-center gap-3"><h3 class="text-2xl font-bold primary-text">Bringing Families Together</h3><i class="fa-solid fa-fire-flame-curved text-yellow-500 text-2xl"></i></div>
+            <h1 class="text-4xl md:text-5xl font-extrabold">Your Path to Adoption <br>Starts Here</h1>
+            <p class="primary-text">Pet abortion, while a serious decision, can be important for preventing health risks to the mother,<br> addressing accidental matings,  or managing pet overpopulation.</p>
+            <button class="btn bg-[#0E7A81] text-white font-bold rounded-lg">View More</button>
+            <img src="images/pet.webp" alt="">
+        </div>
+        <!-- banner ends -->
     </header>
     <main></main>
     <footer></footer>
