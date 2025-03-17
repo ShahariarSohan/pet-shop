@@ -22,4 +22,4 @@ It is a pet shop website.Here you can adopt your desired pet.We are providing va
 
 ### Live Links
 
-- **Github live link** : [https://shahariarsohan.github.io/pet-shop/]
+- **Github live link** : [https://shahariarsohan.github.io/pet-shop/](https://shahariarsohan.github.io/pet-shop/)
