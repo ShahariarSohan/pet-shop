@@ -143,7 +143,7 @@ const displayDetails = async (petId) => {
                 alt="Pet" />
             </figure>
                 <h3 class="text-xl font-bold">${petData.pet_name}</h3>
-                <div class="grid grid-cols-2">
+                <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-anchor"></i><p>Breed :${petData.breed ? petData.breed : "not available"}<p></div>               
                 <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-venus"></i><p>Gender :${petData.gender ? petData.gender : "not available"}<p></div>
                 <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-venus"></i><p>Vaccinated :${petData.vaccinated_status ? petData.vaccinated_status : "not available"}<p></div>
