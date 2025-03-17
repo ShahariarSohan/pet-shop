@@ -20,34 +20,39 @@ displayCategoryButton()
 // display all category
 const displayAllCategories = async () => {
     const cardContainer = document.getElementById('card-container')
-    const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets")
-    const data = await res.json();
-    const petsData = data.pets;
-    petsData.forEach(petData => {
-        const card = document.createElement("div")
-        card.innerHTML = `
-        <div class="card bg-base-100 shadow-sm p-3 space-y-3">
-            <figure>
-                <img class=" w-96 h-52 rounded-md object-cover "
-                src=${petData.image}
-                alt="Pet" />
-            </figure>
-                <h3 class="text-xl font-bold">${petData.pet_name}</h3>
-                <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-anchor"></i><p>Breed :${petData.breed ? petData.breed : "not available"}<p></div>
-                <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-calendar-days"></i><p>Birth :${petData.date_of_birth ? petData.date_of_birth : "not available"}<p></div>
-                <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-venus"></i><p>Gender :${petData.gender ? petData.gender : "not available"}<p></div>
-                <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-dollar-sign"></i><p>Price :${petData.price ? petData.price : "not available"}<p>${petData.price ? '<i class="fa-solid fa-dollar-sign"></i>' : ""}</div>              
-                <div class="flex items-center justify-between">
-                <btn class="btn" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
-                <btn class="btn">Adopt</btn>
-                <btn class="btn" onclick="displayDetails('${petData.petId}')">Details</btn>
+    setTimeout(async () => {
+        const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets")
+        const data = await res.json();
+        const petsData = data.pets;
+        petsData.forEach(petData => {
+            const card = document.createElement("div")
+            card.innerHTML = `
+            <div class="card bg-base-100 shadow-sm p-3 space-y-3">
+                <figure>
+                    <img class=" w-96 h-52 rounded-md object-cover "
+                    src=${petData.image}
+                    alt="Pet" />
+                </figure>
+                    <h3 class="text-xl font-bold">${petData.pet_name}</h3>
+                    <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-anchor"></i><p>Breed :${petData.breed ? petData.breed : "not available"}<p></div>
+                    <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-calendar-days"></i><p>Birth :${petData.date_of_birth ? petData.date_of_birth : "not available"}<p></div>
+                    <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-venus"></i><p>Gender :${petData.gender ? petData.gender : "not available"}<p></div>
+                    <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-dollar-sign"></i><p>Price :${petData.price ? petData.price : "not available"}<p>${petData.price ? '<i class="fa-solid fa-dollar-sign"></i>' : ""}</div>              
+                    <div class="flex items-center justify-between">
+                    <btn class="btn" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
+                    <btn class="btn">Adopt</btn>
+                    <btn class="btn" onclick="displayDetails('${petData.petId}')">Details</btn>
+                    </div>
+                
                 </div>
-            
-            </div>
-        `
-        cardContainer.append(card)
+            `
+            cardContainer.append(card)
 
-    });
+        });
+    }, 2000)
+    setTimeout(() => {
+        document.getElementById("loader").classList.add("hidden")
+    }, 2000);
 }
 displayAllCategories()
 
@@ -56,28 +61,30 @@ displayAllCategories()
 const displayByCategory = async (categoryName) => {
     const cardContainer = document.getElementById('card-container')
     cardContainer.innerHTML = "";
-    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`)
-    const data = await res.json();
-    const petsData = data.data;
-    if (petsData.length === 0) {
-        cardContainer.classList.remove("grid")
-        const div = document.createElement("div")
-        div.innerHTML = `
+    document.getElementById("loader").classList.remove("hidden")
+    setTimeout(async () => {
+        const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`)
+        const data = await res.json();
+        const petsData = data.data;
+        if (petsData.length === 0) {
+            cardContainer.classList.remove("grid")
+            const div = document.createElement("div")
+            div.innerHTML = `
         <div class=" space-y-10">
-            <img class="mx-auto" src="../images/error.webp"/>
+            <img class="mx-auto" src="https://img.icons8.com/?size=80&id=PLJWnvM1vQLJ&format=png"/>
             <h3 class="text-center font-bold text-2xl">No data available</h3>
             <p class="text-center ">There is no data here for birds.When birds will available we will add it.</p>
         </div>
         
         `
-        cardContainer.append(div)
+            cardContainer.append(div)
 
-    }
-    else {
-        cardContainer.classList.add("grid")
-        petsData.forEach(petData => {
-            const card = document.createElement("div")
-            card.innerHTML = `
+        }
+        else {
+            cardContainer.classList.add("grid")
+            petsData.forEach(petData => {
+                const card = document.createElement("div")
+                card.innerHTML = `
             <div class="card bg-base-100 shadow-sm p-3 space-y-3">
                 <figure>
                     <img class=" w-96 h-52 rounded-md object-cover "
@@ -97,10 +104,14 @@ const displayByCategory = async (categoryName) => {
                 
                 </div>
             `
-            cardContainer.append(card)
+                cardContainer.append(card)
 
-        });
-    }
+            });
+        }
+    }, 2000);
+    setTimeout(() => {
+        document.getElementById("loader").classList.add("hidden")
+    }, 2000);
 
 }
 
@@ -118,7 +129,7 @@ const displayLiked = (thumbnail) => {
 
 }
 
-// display details
+// display details(modal)
 
 const displayDetails = async (petId) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
@@ -153,33 +164,42 @@ const displayDetails = async (petId) => {
 const displayByPrice = async () => {
     const cardContainer = document.getElementById('card-container')
     cardContainer.innerHTML = "";
-    const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets")
-    const data = await res.json();
-    const petsData = data.pets;
-    const petsSortByPrice = petsData.sort((pet1, pet2) => pet2.price - pet1.price)
-    petsSortByPrice.forEach(petData => {
-        const card = document.createElement("div")
-        card.innerHTML = `
-        <div class="card bg-base-100 shadow-sm p-3 space-y-3">
-            <figure>
-                <img class=" w-96 h-52 rounded-md object-cover "
-                src=${petData.image}
-                alt="Pet" />
-            </figure>
-                <h3 class="text-xl font-bold">${petData.pet_name}</h3>
-                <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-anchor"></i><p>Breed :${petData.breed ? petData.breed : "not available"}<p></div>
-                <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-calendar-days"></i><p>Birth :${petData.date_of_birth ? petData.date_of_birth : "not available"}<p></div>
-                <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-venus"></i><p>Gender :${petData.gender ? petData.gender : "not available"}<p></div>
-                <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-dollar-sign"></i><p>Price :${petData.price ? petData.price : "not available"}<p>${petData.price ? '<i class="fa-solid fa-dollar-sign"></i>' : ""}</div>                
-                <div class="flex items-center justify-between">
-                <btn class="btn" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
-                <btn class="btn">Adopt</btn>
-                <btn class="btn" onclick="displayDetails('${petData.petId}')">Details</btn>
+    document.getElementById("loader").classList.remove("hidden")
+    setTimeout(async () => {
+        const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets")
+        const data = await res.json();
+        const petsData = data.pets;
+        const petsSortByPrice = petsData.sort((pet1, pet2) => pet2.price - pet1.price)
+        cardContainer.classList.add("grid")
+        petsSortByPrice.forEach(petData => {
+            const card = document.createElement("div")
+            card.innerHTML = `
+            <div class="card bg-base-100 shadow-sm p-3 space-y-3">
+                <figure>
+                    <img class=" w-96 h-52 rounded-md object-cover "
+                    src=${petData.image}
+                    alt="Pet" />
+                </figure>
+                    <h3 class="text-xl font-bold">${petData.pet_name}</h3>
+                    <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-anchor"></i><p>Breed :${petData.breed ? petData.breed : "not available"}<p></div>
+                    <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-calendar-days"></i><p>Birth :${petData.date_of_birth ? petData.date_of_birth : "not available"}<p></div>
+                    <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-venus"></i><p>Gender :${petData.gender ? petData.gender : "not available"}<p></div>
+                    <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-dollar-sign"></i><p>Price :${petData.price ? petData.price : "not available"}<p>${petData.price ? '<i class="fa-solid fa-dollar-sign"></i>' : ""}</div>                
+                    <div class="flex items-center justify-between">
+                    <btn class="btn" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
+                    <btn class="btn">Adopt</btn>
+                    <btn class="btn" onclick="displayDetails('${petData.petId}')">Details</btn>
+                    </div>
+                
                 </div>
-            
-            </div>
-        `
-        cardContainer.append(card)
+            `
+            cardContainer.append(card)
 
-    });
+        });
+    }, 2000);
+    setTimeout(() => {
+        document.getElementById("loader").classList.add("hidden")
+    }, 2000);
+
 }
+
