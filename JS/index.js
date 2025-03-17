@@ -1,4 +1,5 @@
 // display category button
+
 const displayCategoryButton = async () => {
     const res = await fetch("https://openapi.programming-hero.com/api/peddy/categories")
     const data = await res.json();
@@ -18,6 +19,7 @@ const displayCategoryButton = async () => {
 displayCategoryButton()
 
 // display all category
+
 const displayAllCategories = async () => {
     const cardContainer = document.getElementById('card-container')
     setTimeout(async () => {
@@ -161,6 +163,7 @@ const displayDetails = async (petId) => {
 }
 
 // display by price
+
 const displayByPrice = async () => {
     const cardContainer = document.getElementById('card-container')
     cardContainer.innerHTML = "";
