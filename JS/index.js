@@ -65,8 +65,9 @@ const displayByCategory = async (categoryName) => {
         const div = document.createElement("div")
         div.innerHTML = `
         <div class=" space-y-10">
-            <h3 class="text-center font-bold">No data available</h3>
             <img class="mx-auto" src="../images/error.webp"/>
+            <h3 class="text-center font-bold text-2xl">No data available</h3>
+            <p class="text-center ">There is no data here for birds.When birds will available we will add it.</p>
         </div>
         
         `
