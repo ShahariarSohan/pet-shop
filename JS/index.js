@@ -41,9 +41,9 @@ const displayAllCategories = async () => {
                     <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-venus"></i><p>Gender :${petData.gender ? petData.gender : "not available"}<p></div>
                     <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-dollar-sign"></i><p>Price :${petData.price ? petData.price : "not available"}<p>${petData.price ? '<i class="fa-solid fa-dollar-sign"></i>' : ""}</div>              
                     <div class="flex items-center justify-between">
-                    <btn class="btn" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
-                    <btn class="btn">Adopt</btn>
-                    <btn class="btn" onclick="displayDetails('${petData.petId}')">Details</btn>
+                    <btn class="btn hover:bg-[#0E7A81] hover:text-white" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
+                    <btn id="adopted-button" class="btn hover:bg-[#0E7A81] hover:text-white" onclick="displayAdopted()">Adopt</btn>
+                    <btn class="btn hover:bg-[#0E7A81] hover:text-white" onclick="displayDetails('${petData.petId}')">Details</btn>
                     </div>
                 
                 </div>
@@ -99,9 +99,9 @@ const displayByCategory = async (categoryName) => {
                     <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-venus"></i><p>Gender :${petData.gender ? petData.gender : "not available"}<p></div>
                     <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-dollar-sign"></i><p>Price :${petData.price ? petData.price : "not available"}<p>${petData.price ? '<i class="fa-solid fa-dollar-sign"></i>' : ""}</div>                    
                     <div class="flex items-center justify-between">
-                    <btn class="btn" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
-                    <btn class="btn">Adopt</btn>
-                    <btn class="btn" onclick="displayDetails('${petData.petId}')">Details</btn>
+                    <btn class="btn hover:bg-[#0E7A81] hover:text-white" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
+                    <btn id="adopted-button" class="btn hover:bg-[#0E7A81] hover:text-white" onclick="displayAdopted()">Adopt</btn>
+                    <btn class="btn hover:bg-[#0E7A81] hover:text-white" onclick="displayDetails('${petData.petId}')">Details</btn>
                     </div>
                 
                 </div>
@@ -157,7 +157,6 @@ const displayDetails = async (petId) => {
                 
                 
     `
-    // document.getElementById("model-show").click();
     document.getElementById("myModal").showModal();
 
 }
@@ -189,9 +188,9 @@ const displayByPrice = async () => {
                     <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-venus"></i><p>Gender :${petData.gender ? petData.gender : "not available"}<p></div>
                     <div class="flex items-center primary-text gap-2 text-sm"><i class="fa-solid fa-dollar-sign"></i><p>Price :${petData.price ? petData.price : "not available"}<p>${petData.price ? '<i class="fa-solid fa-dollar-sign"></i>' : ""}</div>                
                     <div class="flex items-center justify-between">
-                    <btn class="btn" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
-                    <btn class="btn">Adopt</btn>
-                    <btn class="btn" onclick="displayDetails('${petData.petId}')">Details</btn>
+                    <btn class="btn hover:bg-[#0E7A81] hover:text-white" onclick="displayLiked('${petData.image}')"><i class="fa-solid fa-thumbs-up"></i></btn>
+                    <btn id="adopted-button" class="btn hover:bg-[#0E7A81] hover:text-white" onclick="displayAdopted()">Adopt</btn>
+                    <btn class="btn hover:bg-[#0E7A81] hover:text-white" onclick="displayDetails('${petData.petId}')">Details</btn>
                     </div>
                 
                 </div>
@@ -205,4 +204,18 @@ const displayByPrice = async () => {
     }, 2000);
 
 }
+// adopt button functionality 
 
+const displayAdopted = () => {
+    document.getElementById("model-show").click();
+    let count = 4;
+    const intervalId = setInterval(() => {
+        count--;
+        document.getElementById("timer-content").innerText = count;
+        if (count === 0) {
+            clearInterval(intervalId)
+
+        }
+    }, 1000);
+    document.getElementById("timer-content").innerText = "";
+}

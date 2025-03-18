@@ -138,8 +138,7 @@
                   <!-- image container -->
                    <div id="thumbnail-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 lg:w-1/4 h-1/2  rounded-md bg-base-100 shadow-sm gap-1 "></div>
            </div>
-           <!-- modal -->
-          <button id="model-show"class="btn hidden" onclick="myModal.showModal()">open modal</button>
+           <!-- modal 1-->
           <dialog id="myModal" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
               <div id="model-content" class="space-y-1">
@@ -148,6 +147,21 @@
               <div class="flex justify-center mt-1">
                 <form method="dialog" class="w-full">
                   <button class=" w-full btn text-blue-400 bg-blue-100">Close</button>
+                </form>
+              </div>
+            </div>
+        </dialog>
+           <!-- modal 2-->
+          <button id="model-show"class="btn hidden" onclick="myModal2.showModal()">open modal</button>
+          <dialog id="myModal2" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box text-center space-y-3">
+              <img class="mx-auto" src="https://img.icons8.com/?size=80&id=9UqedlfHM3Dn&format=png" alt="">
+              <h1 class="text-4xl font-bold text-center">Congratulations</h1>
+              <p>Adoption process is started for your pet</p>
+              <h1 id="timer-content" class="text-4xl font-bold text-center"></h1>
+              <div class="flex justify-center">
+                <form method="dialog">
+                  <button class="btn text-blue-400 bg-blue-100">close</button>
                 </form>
               </div>
             </div>
