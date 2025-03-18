@@ -22,4 +22,8 @@ It is a pet shop website.Here you can adopt your desired pet.We are providing va
 
 ### Live Links
 
-- **Github live link** : [https://shahariarsohan.github.io/pet-shop/](https://shahariarsohan.github.io/pet-shop/)
+- Github link : [https://shahariarsohan.github.io/pet-shop/](https://shahariarsohan.github.io/pet-shop/)
+
+- Surge link : [pet-shopping.surge.sh](pet-shopping.surge.sh)
+
+- Vercel link : [https://pet-shop-eefyu0xi9-shahariarsohans-projects.vercel.app](https://pet-shop-eefyu0xi9-shahariarsohans-projects.vercel.app)
